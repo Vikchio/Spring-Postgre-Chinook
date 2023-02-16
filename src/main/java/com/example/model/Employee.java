@@ -1,7 +1,10 @@
 package com.example.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -12,16 +15,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity(name = "customer")
-public class Customer {
+@Entity(name = "employee")
+public class Employee {
+
     @Id
-    private int customerId;
+    @GeneratedValue
+    private int employee_id;
     @Column
-    private String firstName;
+    private String last_name;
     @Column
-    private String lastName;
+    private String first_name;
     @Column
-    private String company;
+    private String title;
+    @ManyToOne
+    @JoinColumn(name = "reports_to")
+    private Employee employee;
+    @Column
+    private Date birth_date;
+    @Column
+    private Date hire_date;
     @Column
     private String address;
     @Column
@@ -31,14 +43,11 @@ public class Customer {
     @Column
     private String country;
     @Column
-    private String postalCode;
+    private String postal_code;
     @Column
     private String phone;
     @Column
     private String fax;
     @Column
     private String email;
-    @ManyToOne
-    @JoinColumn(name = "support_rep_id")
-    private Employee employee;
 }

@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.model.Customer;
-import com.example.service.CustomerService;
+import com.example.model.Employee;
+
+import com.example.service.EmployeeService;
 
 @RestController
-@RequestMapping("/api/customers")
-public class CustomerController {
-
+@RequestMapping("/api/employee")
+public class EmployeeController {
     @Autowired
-    private CustomerService service;
+    private EmployeeService service;
 
     @GetMapping()
-    public List<Customer> all() {
+    public List<Employee> all() {
         return service.all();
     }
 }
